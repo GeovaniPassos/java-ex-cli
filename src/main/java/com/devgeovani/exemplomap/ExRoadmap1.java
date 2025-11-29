@@ -31,7 +31,7 @@ public class ExRoadmap1 {
         int comando = scan.nextInt();
         
         scan.close();
-        
+
         char opcao = 's';
         
         while(opcao == 's'){
