@@ -4,6 +4,8 @@
  */
 package com.devgeovani.exemplomap;
 
+import com.devgeovani.exemplomap.utils.FileSave;
+
 import java.util.Scanner;
 import javax.swing.UIManager;
 
@@ -13,7 +15,9 @@ import javax.swing.UIManager;
  */
 public class ExRoadmap1 {
     public static void main(String[] args) {
-        
+
+        FileSave fileSave = new FileSave();
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -41,7 +45,7 @@ public class ExRoadmap1 {
                     //novo
                     break;
                 case 2:
-                    //
+                    fileSave.fileSaveData();
                     break;
                 case 3:
                     //exibir ajuda
