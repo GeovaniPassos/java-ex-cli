@@ -4,7 +4,7 @@
  */
 package com.devgeovani.exemplomap;
 
-import com.devgeovani.exemplomap.utils.FileSave;
+import com.devgeovani.exemplomap.utils.ReadJsonFile;
 
 import java.util.Scanner;
 import javax.swing.UIManager;
@@ -16,7 +16,8 @@ import javax.swing.UIManager;
 public class ExRoadmap1 {
     public static void main(String[] args) {
 
-        FileSave fileSave = new FileSave();
+        ReadJsonFile fileSave = new ReadJsonFile();
+
 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -42,10 +43,12 @@ public class ExRoadmap1 {
             
             switch (comando) {
                 case 1:
-                    //novo
+                    System.out.println("Digite o nome: ");
+                    String name = scan.nextLine();
+                    fileSave.saveNewContent(name);
                     break;
                 case 2:
-                    fileSave.fileSaveData();
+                    fileSave.readFile();
                     break;
                 case 3:
                     //exibir ajuda
