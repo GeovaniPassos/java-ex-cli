@@ -13,11 +13,10 @@ import javax.swing.UIManager;
  *
  * @author geovani
  */
-public class ExRoadmap1 {
+public class Main {
     public static void main(String[] args) {
 
         ReadJsonFile fileSave = new ReadJsonFile();
-
 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -26,44 +25,52 @@ public class ExRoadmap1 {
         }
         
         Scanner scan = new Scanner(System.in);
-       
-        System.out.println("Acessando a Lista de Tarefas!\n\n");
-        System.out.println("Opções: ");
-        System.out.println("1 - Criar novo arquivo.");
-        System.out.println("2 - Carregar arquivo com tarefas.");
-        System.out.println("3 - Ajuda.");
-        System.out.print("task-cli: ");
-        int comando = scan.nextInt();
-        
-        scan.close();
 
-        char opcao = 's';
-        
-        while(opcao == 's'){
-            
+        String opcao = "";
+
+        do {
+            menuPrincipal();
+            System.out.print("task-cli: ");
+            int comando = scan.nextInt();
             switch (comando) {
                 case 1:
                     System.out.println("Digite o nome: ");
                     String name = scan.nextLine();
+                    System.out.println(name);
                     fileSave.saveNewContent(name);
                     break;
                 case 2:
                     fileSave.readFile();
                     break;
                 case 3:
-                    //exibir ajuda
+                    exibirAjuda();
                     break;
                 default:
-                    System.out.println("Opcao inválida!");
-                    
+                    System.out.println("Opcão inválida!");
             }
-        
-            opcao = 'n';
-        }
+
+            while (!opcao.equalsIgnoreCase("n") ||
+                    !opcao.equalsIgnoreCase("s")) {
+                System.out.print("task-cli: Continuar? n/s");
+                opcao = scan.nextLine();
+            };
+
+        } while(opcao.equalsIgnoreCase("s"));
+
+        System.out.println("Encerrando programa...");
         
     }
     
     public static void exibirAjuda(){
         System.out.println("Exibindo ajuda");
     }
+    public static void menuPrincipal() {
+        System.out.println("Acessando a Lista de Tarefas!\n\n");
+        System.out.println("Opções: ");
+        System.out.println("1 - Criar novo arquivo.");
+        System.out.println("2 - Carregar arquivo com tarefas.");
+        System.out.println("3 - Ajuda.");
+    }
 }
+
+
